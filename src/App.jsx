@@ -14,11 +14,11 @@ function App() {
     const webrtcProvider = new WebrtcProvider(pipe, ydoc, {
       signaling: [signaling]
     })
-    const filesMap = ydoc.getMap('files')
-    filesMap.observe(() => {
-      filesMap.forEach((value, key) => {
-        setSpec(value)
-      })
+    const dataMap = ydoc.getMap('data')
+    dataMap.observe((event, transaction) => {
+      if (transaction.origin === 'web-change') return
+      if (!event.keysChanged.has('content')) return
+      setSpec(dataMap.get('content'))
     })
     webrtcProvider.on('status', ({ status }) => {
       console.log('status', status)

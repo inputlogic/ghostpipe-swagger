@@ -1,14 +1,14 @@
 version: '3.8'
 services:
   web:
-    image: ghcr.io/inputlogic/ghostpipe-swagger:latest
+    image: ${REGISTRY}/${IMAGE_NAME}:${VERSION}
     deploy:
       update_config:
         order: start-first
       labels:
         - traefik.enable=true
         - traefik.swarm.network=traefik-public
-        - traefik.http.routers.swagger-web.rule=Host(`swagger.ghostpipe.dev`)
+        - traefik.http.routers.swagger-web.rule=Host(`${DOMAIN}`)
         - traefik.http.routers.swagger-web.entrypoints=websecure
         - traefik.http.routers.swagger-web.tls=true
         - traefik.http.routers.swagger-web.tls.certresolver=myotherresolver
