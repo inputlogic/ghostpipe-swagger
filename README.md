@@ -4,6 +4,13 @@ Swagger UI with [Ghostpipe](https://github.com/inputlogic/ghostpipe) support.
 
 ![Swagger Demo](demo.gif)
 
+## Try it
+
+```
+npm install -g ghostpipe
+ghostpipe https://swagger.ghostpipe.dev <your_openapi_file>
+```
+
 ## Setup
 
 ```bash
